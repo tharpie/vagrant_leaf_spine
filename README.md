@@ -13,4 +13,5 @@ vEOS Box downloaded from arista.com
 - vEOS-lab-4.18.1F-virtualbox.box
 
 The topology is as follows:
-[(https://github.com/mtharpie/vagrant_leaf_spine/master/vagrant-toplogy.png)]
+
+[https://github.com/mtharpie/vagrant_leaf_spine/blob/master/vagrant-diagram.png]
