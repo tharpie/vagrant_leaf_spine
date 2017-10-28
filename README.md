@@ -12,3 +12,4 @@ VirtualBox 5.2 for CentOS
 vEOS Box downloaded from arista.com
 - vEOS-lab-4.18.1F-virtualbox.box
 
+The topology is as follows:
