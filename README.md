@@ -14,4 +14,4 @@ vEOS Box downloaded from arista.com
 
 The topology is as follows:
 
-[https://github.com/mtharpie/vagrant_leaf_spine/blob/master/vagrant-diagram.png]
+![alt text](https://github.com/mtharpie/vagrant_leaf_spine/blob/master/vagrant-diagram.png)
