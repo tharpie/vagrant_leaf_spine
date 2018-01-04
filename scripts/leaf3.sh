@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
 FastCli -p 15 -c"
+enable
+configure
 
 hostname leaf3
 
 aaa authorization exec default local
-username ansible-user privilege 15 role network-admin secret sha512 $6$uONAST1Yfdlqj6Ix$M7LJIrc.2YYNJxU9wqw1bLXGUeJzttIPC.gRjuz3/SzwniFVn3//srzvu4VNEQx/R0GGGp7AwZgoOb6IdeJ6K/
 
 ip virtual-router mac-address aa:bb:aa:bb:00:01
 
