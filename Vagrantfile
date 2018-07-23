@@ -17,6 +17,7 @@ Vagrant.configure(2) do |config|
         leaf1.vm.provider "virtualbox" do |v|
             v.customize ["modifyvm", :id, "--nic2", "intnet", "--intnet2", "leaf1-spine1"]
             v.customize ["modifyvm", :id, "--nic3", "intnet", "--intnet3", "leaf1-spine2"]
+            v.customize ["modifyvm", :id, "--nic4", "intnet", "--intnet4", "leaf1"]
             end
         end
 
@@ -28,6 +29,7 @@ Vagrant.configure(2) do |config|
         leaf2.vm.provider "virtualbox" do |v|
             v.customize ["modifyvm", :id, "--nic2", "intnet", "--intnet2", "leaf2-spine1"]
             v.customize ["modifyvm", :id, "--nic3", "intnet", "--intnet3", "leaf2-spine2"]
+            v.customize ["modifyvm", :id, "--nic4", "intnet", "--intnet4", "leaf2"]
             end
         end
 
@@ -39,6 +41,7 @@ Vagrant.configure(2) do |config|
         leaf3.vm.provider "virtualbox" do |v|
             v.customize ["modifyvm", :id, "--nic2", "intnet", "--intnet2", "leaf3-spine1"]
             v.customize ["modifyvm", :id, "--nic3", "intnet", "--intnet3", "leaf3-spine2"]
+            v.customize ["modifyvm", :id, "--nic4", "intnet", "--intnet4", "leaf3"]
             end
         end
 
