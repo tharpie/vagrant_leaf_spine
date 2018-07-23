@@ -18,6 +18,7 @@ Vagrant.configure(2) do |config|
             v.customize ["modifyvm", :id, "--nic2", "intnet", "--intnet2", "leaf1-spine1"]
             v.customize ["modifyvm", :id, "--nic3", "intnet", "--intnet3", "leaf1-spine2"]
             v.customize ["modifyvm", :id, "--nic4", "intnet", "--intnet4", "leaf1"]
+            v.customize ["modifyvm", :id, "--nic5", "intnet", "--intnet5", "leaf1"]
             end
         end
 
