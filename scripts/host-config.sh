@@ -16,7 +16,7 @@ ROUTES="
 192.168.13.0/24 via $BASE.1 dev eth1
 "
 
-sudo cat $IFCFG > /etc/sysconfig/network-scripts/ifcfg-eth1
-sudo cat $ROUTES > /etc/sysconfig/network-scripts/route-eth1
+sudo echo "$IFCFG" > /etc/sysconfig/network-scripts/ifcfg-eth1
+sudo echo "$ROUTES" > /etc/sysconfig/network-scripts/route-eth1
 
 sudo ifdown eth1; sudo ifdown eth1
