@@ -77,6 +77,7 @@ Vagrant.configure(2) do |config|
 
     config.vm.define "host1" do |host1|
         host1.vm.box = "centos7"
+        host1.vm.provision "shell", path: "scripts/host-config.sh", args: "192.168.11.100"
         host1.vm.network "private_network", virtualbox__intnet: true, auto_config: false
         host1.vm.provider "virtualbox" do |v|
             v.customize ["modifyvm", :id, "--nic2", "intnet", "--intnet2", "leaf1"]
