@@ -19,4 +19,4 @@ ROUTES="
 sudo echo "$IFCFG" > /etc/sysconfig/network-scripts/ifcfg-eth1
 sudo echo "$ROUTES" > /etc/sysconfig/network-scripts/route-eth1
 
-sudo ifdown eth1; sudo ifdown eth1
+sudo ifdown eth1; sudo ifup eth1
