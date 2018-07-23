@@ -18,7 +18,6 @@ Vagrant.configure(2) do |config|
             v.customize ["modifyvm", :id, "--nic2", "intnet", "--intnet2", "leaf1-spine1"]
             v.customize ["modifyvm", :id, "--nic3", "intnet", "--intnet3", "leaf1-spine2"]
             v.customize ["modifyvm", :id, "--nic4", "intnet", "--intnet4", "leaf1"]
-            v.customize ["modifyvm", :id, "--nic5", "intnet", "--intnet5", "leaf1"]
             end
         end
 
@@ -75,4 +74,15 @@ Vagrant.configure(2) do |config|
             v.customize ["modifyvm", :id, "--nic5", "intnet", "--intnet5", "spine1-spine2"]
             end
         end
+
+    config.vm.define "host1" do |host1|
+        host1.vm.box = "centos/7"
+        host1.vm.provision "shell", path: "scripts/base-config.sh", args: "spine2"
+        host1.vm.network "forwarded_port", guest: 80, host: 8084
+        host1.vm.network "private_network", virtualbox__intnet: true, auto_config: false
+        host1.vm.provider "virtualbox" do |v|
+            v.customize ["modifyvm", :id, "--nic2", "intnet", "--intnet2", "leaf1"]
+            end
+        end
+    
 end
