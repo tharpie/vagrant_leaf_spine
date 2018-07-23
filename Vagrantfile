@@ -76,7 +76,7 @@ Vagrant.configure(2) do |config|
         end
 
     config.vm.define "host1" do |host1|
-        host1.vm.box = "centos/7"
+        host1.vm.box = "centos7"
         host1.vm.provision "shell", path: "scripts/base-config.sh", args: "spine2"
         host1.vm.network "forwarded_port", guest: 80, host: 8084
         host1.vm.network "private_network", virtualbox__intnet: true, auto_config: false
