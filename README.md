@@ -37,7 +37,7 @@ arista@labnuc:~$ sudo pip install jsonrpclib
 ```
 6. git clone project
 ```
-arista@labnuc:~$ git clone xxxx
+arista@labnuc:~$ git clone https://github.com/tharpie/vagrant_leaf_spine.git
 ```
 7. Start environment
 ```
