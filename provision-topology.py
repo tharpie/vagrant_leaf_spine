@@ -74,6 +74,7 @@ for device in devices:
     # Build Configuration Session Config
     session_end = []
     session_end.append('configure replace session-config ignore-errors')
+    session_end.append('copy running-config startup-config')
 
     # Assemble Configuration
     config = session_start + base_config + topology_config + ma_config + session_end
