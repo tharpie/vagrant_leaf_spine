@@ -39,12 +39,17 @@ arista@labnuc:~$ sudo pip install jsonrpclib
 ```
 arista@labnuc:~$ git clone https://github.com/tharpie/vagrant_leaf_spine.git
 ```
-7. Start environment
+7. Add virtual box images
+```
+arista@labnuc:~$ vagrant box add vEOS-lab-4.20.5.2F-virtualbox.box --name 'vEOS-4.20.5.2F'
+arista@labnuc:~$ vagrant box add CentOS-7-x86_64-Vagrant-1804_02.VirtualBox.box --name 'centos7'
+```
+8. Start environment
 ```
 arista@labnuc:~$ vagrant up
 ## This can take a while...
 ```
-8. Provision environment based on environment
+9. Provision environment based on environment
 ```
 arista@labnuc:~$ python provision-topology.py -h
 Help Menu
