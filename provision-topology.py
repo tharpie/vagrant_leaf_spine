@@ -13,18 +13,17 @@ def print_help():
     print 'python provision-topology.py evpn|bgp'
     print ''
 
-
 # Define username / password for eAPI
 # Read in topology from command line
 usr, pwd = ('arista', 'arista')
 topologies = ['bgp', 'evpn']
 try:
     topology = sys.argv[1]
-    if topology not in topologies:
-        raise Exception('Topology provided not supported')
-    elif topology == '-h':
+    if topology == '-h':
         print_help()
         sys.exit(1)
+    elif topology not in topologies:
+        raise Exception('Topology provided not supported')
 except Exception as e:
     print e.message
     print_help()
