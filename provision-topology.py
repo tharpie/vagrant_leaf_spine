@@ -3,10 +3,32 @@
 import jsonrpclib
 import sys
 
+
+def print_help():
+    print 'Help Menu'
+    print '---------------------'
+    print 'valid toplogies are %s' % ', '.join(topologies)
+    print ''
+    print 'Please use the following usage:'
+    print 'python provision-topology.py evpn|bgp'
+    print ''
+
+
 # Define username / password for eAPI
 # Read in topology from command line
 usr, pwd = ('arista', 'arista')
-topology = sys.argv[1]
+topologies = ['bgp', 'evpn']
+try:
+    topology = sys.argv[1]
+    if topology not in topologies:
+        raise Exception('Topology provided not supported')
+    elif topology == '-h':
+        print_help()
+        sys.exit(1)
+except Exception as e:
+    print e.message
+    print_help()
+    sys.exit(1)
 
 
 # Read Vagrantfile and parse for determing local port
