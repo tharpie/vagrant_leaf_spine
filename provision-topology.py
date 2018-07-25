@@ -24,7 +24,7 @@ def reset(connection):
     session_start = ['configure session reset']
     session_end = ['configure replace session-config ignore-errors']
     config = session_start + base_config + session_end
-    result = connection.runCmds(1, base_config)
+    result = connection.runCmds(1, config)
     return
 
 
