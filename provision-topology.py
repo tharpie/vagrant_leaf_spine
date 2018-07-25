@@ -64,7 +64,7 @@ for device in devices:
     conn = jsonrpclib.Server(connection_url)
 
     # Reset to BASE Config
-    reset(conn)
+    # reset(conn)
 
     # Start Session Configuration
     session_start = []
