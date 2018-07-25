@@ -12,6 +12,21 @@ def print_help():
     print 'Please use the following usage:'
     print 'python provision-topology.py evpn|bgp'
     print ''
+    return
+
+
+def reset(connection):
+    conf_filename = 'configs/base-config.cfg'
+    conf_file = open(conf_filename, 'r')
+    base_config = conf_file.read().splitlines()
+    conf_file.close()
+
+    session_start = ['configure session reset']
+    session_end = ['configure replace session-config ignore-errors']
+    config = session_start + base_config + session_end
+    result = connection.runCmds(1, base_config)
+    return
+
 
 # Define username / password for eAPI
 # Read in topology from command line
@@ -47,6 +62,9 @@ vfile.close()
 for device in devices:
     connection_url = 'http://%s:%s@localhost:%s/command-api' % (usr, pwd, device['port'])
     conn = jsonrpclib.Server(connection_url)
+
+    # Reset to BASE Config
+    reset(conn)
 
     # Start Session Configuration
     session_start = []
