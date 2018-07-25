@@ -3,7 +3,10 @@
 ## What is it?
 1. This is a project that allows the user to build multiple topologies based on the diagram below
 2. This project utilizes Vagrant, vEOS, VirtualBox and python to build the topologies
-3. There's two topologies that are supported: L3LS w/BGP and Assymmetric EVPN w/VXLAN
+3. The topologies that are supported: 
+    1. L3LS w/BGP
+    2. Assymmetric EVPN w/VXLAN
+    3. Multicast
 
 ![alt text](https://github.com/mtharpie/vagrant_leaf_spine/blob/master/images/vagrant-leaf-spine.png)
 
@@ -54,10 +57,10 @@ arista@labnuc:~$ vagrant up
 arista@labnuc:~$ python provision-topology.py -h
 Help Menu
 ---------------------
-valid toplogies are bgp, evpn
+valid toplogies are bgp, evpn, mcast
 
 Please use the following usage:
-python provision-topology.py evpn|bgp
+python provision-topology.py evpn|bgp|mcast
 
 arista@labnuc:~$ python provision-topology.py evpn|bgp
 ```
