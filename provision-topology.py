@@ -60,9 +60,11 @@ for device in devices:
     session_start.append('rollback clean-config')
         
     # Gather Management1 interface ip and add to configuration
-    response = conn.runCmds(1, ['show ip interface Management1'])
+    response = conn.runCmds(1, ['show ip interface Management1', 'show hostname'])
     ip = response[0]['interfaces']['Management1']['interfaceAddress']['primaryIp']
+    hostname = response[1]['hostname']
     ma_config = []
+    ma_config.append('hostname %s' % hostname)
     ma_config.append('interface Management1')
     ma_config.append('   ip address %s/%s' % (ip['address'], ip['maskLen']))
 
