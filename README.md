@@ -60,7 +60,6 @@ Help Menu
 valid toplogies are bgp, evpn, mcast
 
 Please use the following usage:
-python provision-topology.py evpn|bgp|mcast
+python provision-topology.py [topology_name]
 
-arista@labnuc:~$ python provision-topology.py evpn|bgp
 ```
