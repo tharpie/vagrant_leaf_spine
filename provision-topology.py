@@ -11,7 +11,7 @@ def print_help():
     print 'valid toplogies are %s' % ', '.join(topologies)
     print ''
     print 'Please use the following usage:'
-    print 'python provision-topology.py evpn|bgp'
+    print 'python provision-topology.py [topology_name]'
     print ''
     return
 
