@@ -2,6 +2,7 @@
 
 import jsonrpclib
 import sys
+import random
 
 
 def print_help():
@@ -12,19 +13,6 @@ def print_help():
     print 'Please use the following usage:'
     print 'python provision-topology.py evpn|bgp'
     print ''
-    return
-
-
-def reset(connection):
-    conf_filename = 'configs/base-config.cfg'
-    conf_file = open(conf_filename, 'r')
-    base_config = conf_file.read().splitlines()
-    conf_file.close()
-
-    session_start = ['configure session reset']
-    session_end = ['configure replace session-config ignore-errors']
-    config = session_start + base_config + session_end
-    result = connection.runCmds(1, config)
     return
 
 
@@ -63,12 +51,13 @@ for device in devices:
     connection_url = 'http://%s:%s@localhost:%s/command-api' % (usr, pwd, device['port'])
     conn = jsonrpclib.Server(connection_url)
 
-    # Reset to BASE Config
-    # reset(conn)
-
     # Start Session Configuration
+    random_str = str(random.random())
+    random_str = random_str.split('.')[-1]
+    session_name = '%s-%s' % (topology, random_str)
     session_start = []
-    session_start.append('configure session %s' % topology)
+    session_start.append('configure session %s' % session_name)
+    session_start.append('rollback clean-config')
         
     # Gather Management1 interface ip and add to configuration
     response = conn.runCmds(1, ['show ip interface Management1'])
@@ -89,15 +78,12 @@ for device in devices:
     topology_config = conf_file.read().splitlines()
     conf_file.close()
 
-    # Build Configuration Session Config
-    session_end = []
-    session_end.append('configure replace session-config ignore-errors')
-    session_end.append('copy running-config startup-config')
-
     # Assemble Configuration
-    config = session_start + base_config + topology_config + ma_config + session_end
+    config = session_start + base_config + topology_config + ma_config
         
     result = conn.runCmds(1, config)
+    result = conn.runCmds(1, ['configure session %s commit' % session_name,
+                              'copy running-config startup-config'])
     
     print 'pushed %s configuration to %s' % (topology, device['device'])
 
