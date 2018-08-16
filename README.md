@@ -57,7 +57,7 @@ arista@labnuc:~$ vagrant up
 arista@labnuc:~$ python provision-topology.py -h
 Help Menu
 ---------------------
-valid toplogies are bgp, evpn, mcast
+valid toplogies are bgp, evpn, mcast, her
 
 Please use the following usage:
 python provision-topology.py [topology_name]
