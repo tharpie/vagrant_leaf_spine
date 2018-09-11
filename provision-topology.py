@@ -19,7 +19,7 @@ def print_help():
 # Define username / password for eAPI
 # Read in topology from command line
 usr, pwd = ('arista', 'arista')
-topologies = ['bgp', 'evpn', 'mcast', 'her']
+topologies = ['bgp', 'evpn', 'mcast', 'her', 'mlag']
 try:
     topology = sys.argv[1]
     if topology == '-h':
